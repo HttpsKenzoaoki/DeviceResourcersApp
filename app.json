@@ -7,7 +7,11 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPHOTOLibraryUsageDescription": "Este aplicativo precisa acessar sua galeria de fotos",
+        "NSContactUsageDescription": "Este aplicativo precisa acessar seus contatos"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -15,7 +19,13 @@
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
+      },
+      "permissions": [
+        "READ_CONTACTS",
+        "WRITE_CONTACTS",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
