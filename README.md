@@ -19,6 +19,12 @@ Aplicativo mobile feito com **Expo SDK 57** e **React Native** que acessa os con
 - Botão **"Adicionar foto da galeria"** — abre a galeria para escolher uma foto
 - Botão **"Remover foto"** — apaga a foto adicionada
 
+### Tela 3 - Recursos do Dispositivo
+- Acessível pelo botão **"Recursos"** no topo da lista de contatos
+- É uma **central** com atalhos para duas ferramentas:
+  - **Galeria de Fotos** (`ImagePickerComponent`) — adiciona uma ou várias imagens da galeria do aparelho e as salva de forma **persistente** (AsyncStorage + expo-file-system), exibindo-as em grade; toque em uma imagem para removê-la
+  - **Compartilhar Contatos** (`ContactsComponent`) — busca contatos pelo nome e compartilha nome, telefones e emails usando o Share do sistema
+
 ### Persistência de fotos
 - As fotos adicionadas são salvas em **AsyncStorage** (mapa `contactId → uri`)
 - O arquivo da foto é copiado para o diretório de documentos do app com **expo-file-system**, garantindo que permaneça salvo mesmo após fechar e reabrir o app
@@ -42,13 +48,17 @@ Aplicativo mobile feito com **Expo SDK 57** e **React Native** que acessa os con
 ├── index.js                             # Ponto de entrada do Expo
 └── src/
     ├── components/
-    │   └── ContactAvatar.js             # Avatar (foto ou iniciais)
+    │   ├── ContactAvatar.js             # Avatar (foto ou iniciais)
+    │   ├── ContactsComponent.js         # Utilitário de busca/compartilhamento de contatos
+    │   └── ImagePickerComponent.js      # Galeria pessoal persistente
     ├── screens/
     │   ├── ContactListScreen.js         # Tela 1 - Lista de contatos
     │   └── ContactDetailScreen.js       # Tela 2 - Detalhes do contato
     └── storage/
         └── contactPhotos.js             # Persistência das fotos (AsyncStorage + FileSystem)
 ```
+
+> A **Tela 3 (Recursos do Dispositivo)** é definida diretamente no `App.js` e leva às telas `ImageGallery` (`ImagePickerComponent`) e `ContactTools` (`ContactsComponent`).
 
 ## Pré-requisitos
 

@@ -57,6 +57,17 @@ const ContactListScreen = ({ navigation }) => {
     loadContacts();
   }, [loadContacts]);
 
+  // Adiciona o botão que leva à tela de recursos do dispositivo
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={() => navigation.navigate('DeviceResources')}>
+          <Text style={styles.headerButton}>Recursos</Text>
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
+
   // Atualiza as fotos salvas sempre que a tela ganha foco
   // (ex: ao voltar da tela de detalhes após adicionar/remover foto)
   useFocusEffect(
@@ -152,6 +163,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
     marginTop: 2,
+  },
+  headerButton: {
+    fontSize: 16,
+    color: '#4A90E2',
+    fontWeight: '600',
+    paddingHorizontal: 8,
   },
 });
 
